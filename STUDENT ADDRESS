@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIHT - Student Address Form</title>
+    <!-- Load Tailwind CSS via CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for textareas */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #a7f3d0; 
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #34d399; 
+        }
+        
+        /* Modal fade-in animation to replace default alerts */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-animate {
+            animation: fadeIn 0.2s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-emerald-50 min-h-screen flex items-center justify-center p-4 text-gray-800">
+
+    <!-- Custom Modal for Validation Errors (Replaces default alert) -->
+    <div id="validationModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex items-center justify-center px-4 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-sm modal-animate text-center">
+            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+                <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Validation Error</h3>
+            <p id="modalMessage" class="text-sm text-gray-600 mb-6">Please fill in all required fields.</p>
+            <button onclick="closeModal()" class="w-full bg-emerald-600 text-white font-medium py-2.5 rounded-lg hover:bg-emerald-700 transition-colors">
+                Okay
+            </button>
+        </div>
+    </div>
+
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-xl overflow-hidden border border-emerald-100">
+        
+        <!-- Header Section -->
+        <div class="bg-emerald-700 px-6 py-8 text-center relative overflow-hidden">
+            <!-- Decorative circle effect -->
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-emerald-600 rounded-full opacity-50"></div>
+            
+            <h1 class="text-2xl font-bold text-white relative z-10 leading-tight">
+                Rabindra Institute for Health Training (RIHT)
+            </h1>
+            <p class="text-emerald-100 mt-2 text-sm relative z-10 font-medium">
+                Student Address Collection Form
+            </p>
+        </div>
+
+        <div class="p-6 sm:p-8">
+            <form id="addressForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                
+                <!-- Name Field -->
+                <div>
+                    <label for="studentName" class="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Student Name <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="studentName" 
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-gray-800 bg-gray-50 focus:bg-white"
+                        placeholder="Enter full name">
+                </div>
+
+                <!-- Phone Field -->
+                <div>
+                    <label for="studentPhone" class="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Phone Number <span class="text-red-500">*</span>
+                    </label>
+                    <input type="tel" id="studentPhone" 
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-gray-800 bg-gray-50 focus:bg-white"
+                        placeholder="Enter 10-digit mobile number">
+                </div>
+
+                <!-- Address Field -->
+                <div>
+                    <label for="studentAddress" class="block text-sm font-semibold text-gray-700 mb-1.5">
+                        Full Address <span class="text-red-500">*</span>
+                    </label>
+                    <textarea id="studentAddress" rows="3" 
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-gray-800 bg-gray-50 focus:bg-white resize-none"
+                        placeholder="Village/Street, P.O, P.S, District..."></textarea>
+                </div>
+
+                <!-- PIN Code Field -->
+                <div>
+                    <label for="studentPin" class="block text-sm font-semibold text-gray-700 mb-1.5">
+                        PIN Code <span class="text-red-500">*</span>
+                    </label>
+                    <input type="number" id="studentPin" 
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-shadow text-gray-800 bg-gray-50 focus:bg-white"
+                        placeholder="Enter 6-digit PIN code">
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" 
+                        class="w-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2">
+                        <!-- WhatsApp SVG Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        Send to WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal logic (to avoid using default browser alert)
+        const modal = document.getElementById('validationModal');
+        const modalMessage = document.getElementById('modalMessage');
+
+        function showModal(message) {
+            modalMessage.textContent = message;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Close modal when user clicks anywhere outside of the modal box
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Handle the form submission
+        function handleFormSubmit(event) {
+            // Prevent the page from reloading
+            event.preventDefault();
+
+            // Fetch and trim the input values
+            const name = document.getElementById('studentName').value.trim();
+            const phone = document.getElementById('studentPhone').value.trim();
+            const address = document.getElementById('studentAddress').value.trim();
+            const pin = document.getElementById('studentPin').value.trim();
+
+            // Validate that no fields are left empty
+            if (!name || !phone || !address || !pin) {
+                showModal("অনুগ্রহ করে সমস্ত তথ্য সঠিকভাবে পূরণ করুন! (Please fill in all fields before sending.)");
+                return; // Stop the function here
+            }
+
+            // The target WhatsApp Number (with country code 91)
+            const targetNumber = "919775469551";
+
+            // Format the message with bold text (*) and line breaks (\n)
+            const messageBody = `*New Student Address (RIHT)*\n------------------------\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n*PIN Code:* ${pin}`;
+
+            // URL encode the message so it can be sent as a URL parameter safely
+            const encodedMessage = encodeURIComponent(messageBody);
+
+            // Construct the WhatsApp API link
+            const whatsappUrl = `https://wa.me/${targetNumber}?text=${encodedMessage}`;
+
+            // Redirect the user to WhatsApp in a new tab/window
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
