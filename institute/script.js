@@ -132,6 +132,7 @@ function renderCourses() {
         <div><span>Duration</span><strong>${escapeHtml(course.duration)}</strong></div>
         <div><span>Eligibility</span><strong>${escapeHtml(course.eligibility)}</strong></div>
       </div>
+      <a class="course-enquiry" href="https://wa.me/916297193609?text=${encodeURIComponent(`Hello Rabindra Institute for Health Training, I want to know more about ${course.name}.`)}" target="_blank" rel="noopener">Enquire on WhatsApp →</a>
     </article>
   `).join("");
 }
