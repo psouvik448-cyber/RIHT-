@@ -210,19 +210,29 @@ const updateHeaderDepth=()=>siteHeader?.classList.toggle('scrolled',window.scrol
 updateHeaderDepth();window.addEventListener('scroll',updateHeaderDepth,{passive:true});
 
 
-// Hero image slideshow
+// Hero image slideshow — reliable on desktop and mobile
 const heroSlides = [...document.querySelectorAll(".hero-slide")];
 const heroDots = [...document.querySelectorAll(".hero-dot")];
 let heroIndex = 0;
-let heroTimer;
+let heroTimer = null;
+
 const showHeroSlide = (index) => {
-  heroSlides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
-  heroDots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
-  heroIndex = index;
+  if (!heroSlides.length) return;
+  heroIndex = (index + heroSlides.length) % heroSlides.length;
+  heroSlides.forEach((slide, i) => {
+    slide.classList.toggle("is-active", i === heroIndex);
+    slide.setAttribute("aria-hidden", i === heroIndex ? "false" : "true");
+  });
+  heroDots.forEach((dot, i) => dot.classList.toggle("is-active", i === heroIndex));
 };
+
 const startHeroSlideshow = () => {
-  if (heroSlides.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  heroTimer = window.setInterval(() => showHeroSlide((heroIndex + 1) % heroSlides.length), 4500);
+  if (heroSlides.length < 2) return;
+  if (heroTimer) window.clearInterval(heroTimer);
+  heroTimer = window.setInterval(() => {
+    showHeroSlide(heroIndex + 1);
+  }, 4500);
 };
+
 showHeroSlide(0);
 startHeroSlideshow();
