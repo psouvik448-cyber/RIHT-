@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091a36">
+  <meta name="description" content="Latest updates and notifications from Rabindra Institute for Health Training.">
+  <title>Notifications | Rabindra Institute for Health Training</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .updates-page{min-height:100vh;background:var(--mist);padding:140px 0 80px}
+    .updates-head{text-align:center;max-width:760px;margin:0 auto 46px}
+    .updates-head h1{margin:10px 0 14px;font-size:clamp(2.5rem,6vw,4.8rem);line-height:1;letter-spacing:-.05em;color:var(--ink)}
+    .updates-head p{margin:0;color:var(--muted)}
+    .updates-list{max-width:900px;margin:0 auto;display:grid;gap:18px}
+    .update-card{position:relative;padding:30px 32px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 45px rgba(5,22,49,.08);overflow:hidden}
+    .update-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--cyan)}
+    .update-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px}
+    .update-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;background:var(--cyan-soft);color:var(--cyan);font-size:.72rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+    .update-date{color:var(--muted);font-size:.78rem;font-weight:700;white-space:nowrap}
+    .update-card h2{margin:0 0 8px;font-size:1.45rem;line-height:1.3;color:var(--ink)}
+    .update-course{margin:0 0 12px;color:var(--cyan);font-weight:800}
+    .update-card p{margin:0;color:#526176}
+    .update-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .update-actions a{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border-radius:11px;text-decoration:none;font-size:.82rem;font-weight:800}
+    .update-primary{color:#fff;background:var(--navy)}
+    .update-secondary{color:var(--cyan);border:1px solid rgba(8,165,200,.35)}
+    .updates-back{display:inline-flex;margin-top:34px;color:var(--cyan);font-weight:800;text-decoration:none}
+    @media(max-width:600px){.updates-page{padding:110px 0 55px}.update-card{padding:24px 22px}.update-top{align-items:flex-start;flex-direction:column;gap:10px}.update-date{white-space:normal}.update-actions a{width:100%}}
+  </style>
+</head>
+<body>
+  <header class="site-header scrolled">
+    <div class="nav-shell">
+      <a class="brand" href="index.html" aria-label="Rabindra Institute for Health Training home">
+        <img src="assets/logo.png" alt="Rabindra Institute for Health Training logo" width="64" height="64">
+        <span><strong>RABINDRA INSTITUTE</strong><small>FOR HEALTH TRAINING</small></span>
+      </a>
+      <a class="nav-cta" href="index.html">Back to Website</a>
+    </div>
+  </header>
+  <main class="updates-page">
+    <div class="wrap">
+      <div class="updates-head">
+        <p class="eyebrow dark">INSTITUTE NOTIFICATIONS</p>
+        <h1>Latest Updates</h1>
+        <p>Stay informed about new admissions, courses, classes, examinations, events and important institute announcements.</p>
+      </div>
+      <div class="updates-list">
+        <article class="update-card">
+          <div class="update-top">
+            <span class="update-badge">🔔 New Update</span>
+            <span class="update-date">Posted: 25 September 2026</span>
+          </div>
+          <h2>Admission Open 2026–27</h2>
+          <p class="update-course">Community Medical Service &amp; Essential Drugs Training (CMS &amp; EDT)</p>
+          <p>New session admission is now open.</p>
+          <div class="update-actions">
+            <a class="update-primary" href="index.html#admission">Admission Enquiry →</a>
+            <a class="update-secondary" href="https://wa.me/916297193609?text=Hello%20Rabindra%20Institute%20for%20Health%20Training,%20I%20want%20to%20know%20more%20about%20CMS%20%26%20EDT%20Admission%202026-27." target="_blank" rel="noopener">WhatsApp Enquiry</a>
+          </div>
+        </article>
+      </div>
+      <a class="updates-back" href="index.html">← Back to Rabindra Institute for Health Training</a>
+    </div>
+  </main>
+</body>
+</html>
