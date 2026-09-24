@@ -1,5 +1,5 @@
 const courses = [
-  { group: "IRMA", name: "Community Medical Service & Essential Drugs Training For Essential Drugs Training For Primary Health Care, WHO (CMS & EDT)", duration: "18 Months", eligibility: "M.P." },
+  { group: "IRMA", name: "Community Medical Service & Essential Drugs Training For Primary Health Care, WHO (CMS & EDT)", duration: "18 Months", eligibility: "M.P." },
   { group: "IRMA", name: "Vaccination (VACC)", duration: "6 Months", eligibility: "M.P." },
   { group: "IRMA", name: "Population Education Training (PET)", duration: "6 Months", eligibility: "After ED Course" },
   { group: "IRMA", name: "Family Welfare Training (FWT)", duration: "6 Months", eligibility: "H.S." },
@@ -137,7 +137,7 @@ function renderCourses() {
   `).join("");
 }
 
-filterBar.addEventListener("click", (event) => {
+filterBar?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-filter]");
   if (!button) return;
   activeFilter = button.dataset.filter;
@@ -145,26 +145,25 @@ filterBar.addEventListener("click", (event) => {
   renderCourses();
 });
 
-searchInput.addEventListener("input", renderCourses);
-renderFilters();
-renderCourses();
+searchInput?.addEventListener("input", renderCourses);
+if (filterBar && grid && searchInput && resultCount) { renderFilters(); renderCourses(); }
 
 const menuToggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector("#site-nav");
-menuToggle.addEventListener("click", () => {
-  const isOpen = nav.classList.toggle("open");
+menuToggle?.addEventListener("click", () => {
+  const isOpen = nav?.classList.toggle("open") ?? false;
   menuToggle.setAttribute("aria-expanded", String(isOpen));
   document.body.classList.toggle("menu-open", isOpen);
 });
-nav.addEventListener("click", (event) => {
+nav?.addEventListener("click", (event) => {
   if (!event.target.closest("a")) return;
   nav.classList.remove("open");
-  menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle?.setAttribute("aria-expanded", "false");
   document.body.classList.remove("menu-open");
 });
 
 const enquiryForm = document.querySelector("#enquiry-form");
-enquiryForm.addEventListener("submit", (event) => {
+enquiryForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const data = new FormData(enquiryForm);
   const message = [
@@ -182,15 +181,15 @@ enquiryForm.addEventListener("submit", (event) => {
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxClose = document.querySelector("#lightbox-close");
-document.querySelector("#gallery-grid").addEventListener("click", (event) => {
+document.querySelector("#gallery-grid")?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-image]");
-  if (!button) return;
+  if (!button || !lightbox || !lightboxImage) return;
   lightboxImage.src = button.dataset.image;
   lightboxImage.alt = button.querySelector("img").alt;
   lightbox.showModal();
 });
-lightboxClose.addEventListener("click", () => lightbox.close());
-lightbox.addEventListener("click", (event) => {
+lightboxClose?.addEventListener("click", () => lightbox?.close());
+lightbox?.addEventListener("click", (event) => {
   if (event.target === lightbox) lightbox.close();
 });
 
