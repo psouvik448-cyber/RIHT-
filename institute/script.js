@@ -192,3 +192,11 @@ lightboxClose.addEventListener("click", () => lightbox.close());
 lightbox.addEventListener("click", (event) => {
   if (event.target === lightbox) lightbox.close();
 });
+
+
+// Premium scroll reveals and subtle 3D card interaction
+const revealTargets=document.querySelectorAll('.section-heading,.statement-card,.course-card,.reason-photo,.feature-list li,.affiliation-grid article,.gallery-item,.admission-copy,.enquiry-form,.footer-grid > div');
+revealTargets.forEach((element,index)=>{element.classList.add('reveal-on-scroll');element.style.transitionDelay=((index%5)*70)+'ms'});
+if('IntersectionObserver' in window){const revealObserver=new IntersectionObserver((entries,observer)=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('is-visible');observer.unobserve(entry.target)})},{threshold:.12,rootMargin:'0px 0px -45px 0px'});revealTargets.forEach(element=>revealObserver.observe(element))}else{revealTargets.forEach(element=>element.classList.add('is-visible'))}
+const canTilt=window.matchMedia('(hover: hover) and (pointer: fine)').matches&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(canTilt){document.querySelectorAll('.course-card,.statement-card,.affiliation-grid article').forEach(card=>{card.addEventListener('pointermove',event=>{const rect=card.getBoundingClientRect();const x=(event.clientX-rect.left)/rect.width;const y=(event.clientY-rect.top)/rect.height;const rotateY=(x-.5)*7;const rotateX=(.5-y)*7;card.style.transform='perspective(900px) rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) translateY(-5px)'});card.addEventListener('pointerleave',()=>{card.style.transform=''})})}
