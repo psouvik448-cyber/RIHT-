@@ -424,3 +424,12 @@ h1 {
 .nav-notification{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
 .notification-badge{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;color:#fff;background:#e53935;font-size:.64rem;font-weight:900;line-height:1;box-shadow:0 0 0 3px rgba(229,57,53,.12)}
 @media(max-width:780px){.nav-notification{justify-content:flex-start}.notification-badge{margin-left:2px}}
+
+
+/* Smooth navigation + visible home control */
+.nav-shell{transition:transform .25s ease}
+nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
+.nav-notification{order:99}
+.updates-home-button{display:inline-flex!important;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;color:#fff!important;background:var(--cyan);border:1px solid rgba(255,255,255,.2);border-radius:12px;text-decoration:none;font-size:.82rem;font-weight:850;white-space:nowrap;box-shadow:0 8px 22px rgba(8,165,200,.22);transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.updates-home-button:hover,.updates-home-button:focus-visible{transform:translateY(-2px);box-shadow:0 12px 28px rgba(8,165,200,.28);background:#0793b3}
+@media(max-width:780px){.updates-home-button{width:100%;margin-top:8px}.nav-notification{order:99}}
