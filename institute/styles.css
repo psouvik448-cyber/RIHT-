@@ -418,3 +418,9 @@ h1 {
 .course-enquiry:hover,.course-enquiry:focus-visible{background:var(--cyan);color:var(--white)}
 @media(max-width:1000px){.help-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.help-grid{grid-template-columns:1fr}.help-card{min-height:0}}
+
+
+/* Notifications navigation */
+.nav-notification{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.notification-badge{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;color:#fff;background:#e53935;font-size:.64rem;font-weight:900;line-height:1;box-shadow:0 0 0 3px rgba(229,57,53,.12)}
+@media(max-width:780px){.nav-notification{justify-content:flex-start}.notification-badge{margin-left:2px}}
