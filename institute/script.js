@@ -200,3 +200,11 @@ revealTargets.forEach((element,index)=>{element.classList.add('reveal-on-scroll'
 if('IntersectionObserver' in window){const revealObserver=new IntersectionObserver((entries,observer)=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.classList.add('is-visible');observer.unobserve(entry.target)})},{threshold:.12,rootMargin:'0px 0px -45px 0px'});revealTargets.forEach(element=>revealObserver.observe(element))}else{revealTargets.forEach(element=>element.classList.add('is-visible'))}
 const canTilt=window.matchMedia('(hover: hover) and (pointer: fine)').matches&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(canTilt){document.querySelectorAll('.course-card,.statement-card,.affiliation-grid article').forEach(card=>{card.addEventListener('pointermove',event=>{const rect=card.getBoundingClientRect();const x=(event.clientX-rect.left)/rect.width;const y=(event.clientY-rect.top)/rect.height;const rotateY=(x-.5)*7;const rotateX=(.5-y)*7;card.style.transform='perspective(900px) rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) translateY(-5px)'});card.addEventListener('pointerleave',()=>{card.style.transform=''})})}
+
+
+// Premium loading state and header depth
+const siteLoader=document.querySelector('#site-loader');
+window.addEventListener('load',()=>{window.setTimeout(()=>siteLoader?.classList.add('is-hidden'),250)});
+const siteHeader=document.querySelector('.site-header');
+const updateHeaderDepth=()=>siteHeader?.classList.toggle('scrolled',window.scrollY>24);
+updateHeaderDepth();window.addEventListener('scroll',updateHeaderDepth,{passive:true});
