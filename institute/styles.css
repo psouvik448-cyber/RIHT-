@@ -761,9 +761,15 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
 }
 
 
-/* Fill the last desktop gallery row without leaving an empty column */
+/* Balanced gallery mosaic: use a real photo to fill the final row */
 @media (min-width: 1101px) {
+  .gallery-grid {
+    grid-auto-flow: row dense !important;
+  }
   .gallery-grid .gallery-item:nth-last-child(3) {
+    grid-column: auto !important;
+  }
+  .gallery-grid .gallery-item:last-child {
     grid-column: span 2 !important;
   }
 }
