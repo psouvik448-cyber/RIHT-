@@ -584,3 +584,51 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
 .updates-social { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
 .updates-social > span { color: #47717a; font-size: .7rem; font-weight: 850; letter-spacing: .12em; }
 @media(max-width:1000px) { .footer-social { grid-column: 1 / -1; } }
+
+/* Compact, balanced social icons beside the Follow Us label */
+.footer-social h2 { font-size: 1rem; line-height: 1.35; margin: 0 0 10px; }
+.footer-social .social-links,
+.updates-social .social-links {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  width: auto;
+  max-width: 100%;
+}
+.footer-social .social-link,
+.updates-social .social-link {
+  box-sizing: border-box;
+  flex: 0 0 36px;
+  width: 36px !important;
+  min-width: 36px;
+  max-width: 36px;
+  height: 36px !important;
+  min-height: 36px;
+  max-height: 36px;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.footer-social .social-link svg,
+.updates-social .social-link svg {
+  width: 20px !important;
+  min-width: 20px;
+  max-width: 20px;
+  height: 20px !important;
+  min-height: 20px;
+  max-height: 20px;
+  flex: 0 0 20px;
+}
+.updates-social {
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.updates-social > span {
+  font-size: .72rem;
+  line-height: 1.3;
+  letter-spacing: .08em;
+}
+
