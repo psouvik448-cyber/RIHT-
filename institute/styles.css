@@ -571,3 +571,16 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
 @media (max-width: 560px) {
   .visitor-counter-display .visitor-counter-unit { margin-left: 4px; font-size: .64rem; }
 }
+
+
+/* Clickable official social profile icons */
+.footer-social h2 { margin-bottom: 12px; }
+.social-links { display: flex; align-items: center; gap: 12px; }
+.social-link { display: inline-flex!important; align-items: center; justify-content: center; width: 46px; height: 46px; margin: 0!important; border-radius: 14px; text-decoration: none; color: #fff!important; box-shadow: 0 8px 22px rgba(0,0,0,.16); transition: transform .2s ease, box-shadow .2s ease; }
+.social-link svg { display: block; width: 25px; height: 25px; }
+.social-facebook { background: #1877F2; }
+.social-instagram { background: linear-gradient(135deg,#833ab4 0%,#c13584 38%,#e1306c 62%,#f77737 100%); }
+.social-link:hover,.social-link:focus-visible { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,.25); outline: 2px solid #6ee1f1; outline-offset: 3px; }
+.updates-social { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
+.updates-social > span { color: #47717a; font-size: .7rem; font-weight: 850; letter-spacing: .12em; }
+@media(max-width:1000px) { .footer-social { grid-column: 1 / -1; } }
