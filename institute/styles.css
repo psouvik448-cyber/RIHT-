@@ -484,7 +484,7 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
   column-gap: 11px;
   row-gap: 2px;
   width: 100%;
-  margin: 0;
+  margin: 78px 0 0;
   padding: 10px max(16px, calc((100% - 1180px) / 2));
   border: 0;
   border-bottom: 1px solid #d7e7ec;
@@ -547,6 +547,7 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
 .visitor-counter-note { display: none; }
 @media (max-width: 560px) {
   .visitor-counter {
+    margin-top: 70px;
     grid-template-columns: 30px minmax(0, 1fr) auto;
     column-gap: 8px;
     padding: 9px 12px;
