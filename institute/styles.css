@@ -455,3 +455,18 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
   .hero-dots { z-index: 4; }
   .menu-toggle { position: relative; z-index: 120; }
 }
+
+
+/* Course catalogue: reduce scrolling and keep category filters compact */
+.course-more-wrap { display: flex; justify-content: center; margin-top: 28px; }
+.course-more { min-height: 48px; padding: 12px 24px; color: var(--navy); background: #6ee1f1; border: 1px solid #6ee1f1; border-radius: 999px; font-size: .92rem; font-weight: 850; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.course-more:hover, .course-more:focus-visible { background: #fff; border-color: #fff; outline: 3px solid rgba(110,225,241,.25); outline-offset: 3px; }
+.course-more[hidden] { display: none !important; }
+.course-filter { flex: 0 0 auto; }
+@media (max-width: 780px) {
+  .course-filters { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; padding: 3px 2px 12px; margin-top: 24px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+  .course-filter { white-space: nowrap; }
+  .result-count { margin: 14px 0; }
+  .course-more-wrap { margin-top: 22px; }
+  .course-more { width: 100%; }
+}
