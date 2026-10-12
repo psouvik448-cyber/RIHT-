@@ -474,22 +474,24 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
 
 
 
-/* Visitor counter — placed near the top so visitors can notice it naturally */
+
+/* First-screen visitor counter: compact strip directly below the navigation */
 .visitor-counter {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr) auto;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
   grid-template-rows: auto auto;
   align-items: center;
-  column-gap: 14px;
-  row-gap: 4px;
-  width: min(calc(100% - 32px), 1080px);
-  margin: 22px auto 26px;
-  padding: 17px 22px;
-  border: 1px solid #d7e7ec;
-  border-left: 4px solid #22b8bd;
-  border-radius: 14px;
-  background: linear-gradient(100deg, #f4fbfc 0%, #ffffff 68%);
-  box-shadow: 0 7px 22px rgba(9, 35, 58, .08);
+  column-gap: 11px;
+  row-gap: 2px;
+  width: 100%;
+  margin: 0;
+  padding: 10px max(16px, calc((100% - 1180px) / 2));
+  border: 0;
+  border-bottom: 1px solid #d7e7ec;
+  border-radius: 0;
+  border-left: 0;
+  background: linear-gradient(90deg, #effbfb 0%, #ffffff 55%, #f5fbfd 100%);
+  box-shadow: 0 3px 12px rgba(9, 35, 58, .06);
   text-align: left;
 }
 .visitor-counter-icon {
@@ -497,21 +499,21 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
   grid-row: 1 / span 2;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: #dff7f6;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: #d9f5f3;
   color: #087f87;
-  font-size: 1.45rem;
+  font-size: 1.15rem;
   font-weight: 800;
 }
 .visitor-counter-label {
   grid-column: 2;
   grid-row: 1;
   color: #47717a;
-  font-size: .66rem;
+  font-size: .58rem;
   font-weight: 800;
-  letter-spacing: .11em;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 .visitor-counter-heading {
@@ -519,9 +521,9 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
   grid-row: 2;
   margin: 0;
   color: #10283f;
-  font-size: clamp(1rem, 2.5vw, 1.22rem);
+  font-size: .96rem;
   font-weight: 850;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 .visitor-counter-display {
   grid-column: 3;
@@ -529,11 +531,11 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
+  min-height: 36px;
   max-width: 100%;
-  padding: 7px 12px;
-  border: 1px solid #d4e7eb;
-  border-radius: 10px;
+  padding: 5px 10px;
+  border: 1px solid #c7e5e9;
+  border-radius: 9px;
   background: #fff;
 }
 .visitor-counter-display img {
@@ -542,24 +544,15 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
   height: auto;
   border: 0;
 }
-.visitor-counter-note {
-  display: none;
-}
+.visitor-counter-note { display: none; }
 @media (max-width: 560px) {
   .visitor-counter {
-    grid-template-columns: 36px minmax(0, 1fr);
-    width: calc(100% - 28px);
-    column-gap: 11px;
-    margin: 16px auto 20px;
-    padding: 14px;
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    column-gap: 8px;
+    padding: 9px 12px;
   }
-  .visitor-counter-icon { width: 34px; height: 34px; border-radius: 10px; font-size: 1.2rem; }
-  .visitor-counter-display {
-    grid-column: 2;
-    grid-row: 3;
-    justify-self: start;
-    margin-top: 8px;
-    min-height: 38px;
-    padding: 6px 10px;
-  }
+  .visitor-counter-icon { width: 29px; height: 29px; font-size: 1rem; }
+  .visitor-counter-label { font-size: .51rem; letter-spacing: .06em; }
+  .visitor-counter-heading { font-size: .88rem; }
+  .visitor-counter-display { min-height: 32px; padding: 4px 7px; }
 }
