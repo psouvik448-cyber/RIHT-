@@ -761,8 +761,13 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
 }
 
 
-/* Fill the final empty gallery slot on desktop and laptop */
-@media (min-width: 781px) {
+/* Fill the last desktop gallery row without leaving an empty column */
+@media (min-width: 1101px) {
+  .gallery-grid .gallery-item:nth-last-child(3) {
+    grid-column: span 2 !important;
+  }
+}
+@media (min-width: 781px) and (max-width: 1100px) {
   .gallery-grid .gallery-item:last-child {
     grid-column: span 2 !important;
   }
