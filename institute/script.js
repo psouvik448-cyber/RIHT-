@@ -94,6 +94,9 @@ const filterBar = document.querySelector("#course-filters");
 const searchInput = document.querySelector("#course-search");
 const resultCount = document.querySelector("#result-count");
 let activeFilter = "All";
+const coursePageSize = 6;
+let visibleLimit = coursePageSize;
+const moreCoursesButton = document.querySelector("#course-more");
 
 const escapeHtml = (value) => value.replace(/[&<>'"]/g, (character) => ({
   "&": "&amp;",
@@ -111,20 +114,24 @@ function renderFilters() {
 
 function renderCourses() {
   const term = searchInput.value.trim().toLowerCase();
-  const visibleCourses = courses.filter((course) => {
+  const matchingCourses = courses.filter((course) => {
     const matchesFilter = activeFilter === "All" || course.group === activeFilter;
     const matchesSearch = !term || `${course.name} ${course.group} ${course.duration} ${course.eligibility}`.toLowerCase().includes(term);
     return matchesFilter && matchesSearch;
   });
+  const coursesToRender = matchingCourses.slice(0, visibleLimit);
 
-  resultCount.textContent = `${visibleCourses.length} course${visibleCourses.length === 1 ? "" : "s"} shown`;
+  resultCount.textContent = matchingCourses.length > visibleLimit
+    ? `Showing ${coursesToRender.length} of ${matchingCourses.length} courses`
+    : `${matchingCourses.length} course${matchingCourses.length === 1 ? "" : "s"} found`;
 
-  if (!visibleCourses.length) {
-    grid.innerHTML = '<div class="empty-state">No matching course found.</div>';
+  if (!matchingCourses.length) {
+    grid.innerHTML = '<div class="empty-state">No matching course found. Try another course name or category.</div>';
+    if (moreCoursesButton) moreCoursesButton.hidden = true;
     return;
   }
 
-  grid.innerHTML = visibleCourses.map((course) => `
+  grid.innerHTML = coursesToRender.map((course) => `
     <article class="course-card">
       <p class="group">${escapeHtml(course.group)}</p>
       <h3>${escapeHtml(course.name)}</h3>
@@ -135,17 +142,39 @@ function renderCourses() {
       <a class="course-enquiry" href="https://wa.me/916297193609?text=${encodeURIComponent(`Hello Rabindra Institute for Health Training, I want to know more about ${course.name}.`)}" target="_blank" rel="noopener">Enquire on WhatsApp →</a>
     </article>
   `).join("");
+
+  if (moreCoursesButton) {
+    moreCoursesButton.hidden = matchingCourses.length <= visibleLimit;
+    moreCoursesButton.textContent = visibleLimit >= matchingCourses.length
+      ? "Show Fewer Courses ↑"
+      : `Show More Courses (${matchingCourses.length - visibleLimit} more) ↓`;
+    moreCoursesButton.setAttribute("aria-expanded", String(visibleLimit >= matchingCourses.length));
+  }
 }
 
 filterBar?.addEventListener("click", (event) => {
   const button = event.target.closest("[data-filter]");
   if (!button) return;
   activeFilter = button.dataset.filter;
+  visibleLimit = coursePageSize;
   renderFilters();
   renderCourses();
 });
 
-searchInput?.addEventListener("input", renderCourses);
+searchInput?.addEventListener("input", () => {
+  visibleLimit = coursePageSize;
+  renderCourses();
+});
+moreCoursesButton?.addEventListener("click", () => {
+  const term = searchInput.value.trim().toLowerCase();
+  const matchingCount = courses.filter((course) => {
+    const matchesFilter = activeFilter === "All" || course.group === activeFilter;
+    const matchesSearch = !term || `${course.name} ${course.group} ${course.duration} ${course.eligibility}`.toLowerCase().includes(term);
+    return matchesFilter && matchesSearch;
+  }).length;
+  visibleLimit = visibleLimit >= matchingCount ? coursePageSize : Math.min(visibleLimit + coursePageSize, matchingCount);
+  renderCourses();
+});
 if (filterBar && grid && searchInput && resultCount) { renderFilters(); renderCourses(); }
 
 const menuToggle = document.querySelector(".menu-toggle");
