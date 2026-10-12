@@ -759,3 +759,11 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
     object-position: center !important;
   }
 }
+
+
+/* Fill the final empty gallery slot on desktop and laptop */
+@media (min-width: 781px) {
+  .gallery-grid .gallery-item:last-child {
+    grid-column: span 2 !important;
+  }
+}
