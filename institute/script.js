@@ -145,10 +145,8 @@ function renderCourses() {
 
   if (moreCoursesButton) {
     moreCoursesButton.hidden = matchingCourses.length <= visibleLimit;
-    moreCoursesButton.textContent = visibleLimit >= matchingCourses.length
-      ? "Show Fewer Courses ↑"
-      : `Show More Courses (${matchingCourses.length - visibleLimit} more) ↓`;
-    moreCoursesButton.setAttribute("aria-expanded", String(visibleLimit >= matchingCourses.length));
+    moreCoursesButton.textContent = `Show More Courses (${matchingCourses.length - visibleLimit} more) ↓`;
+    moreCoursesButton.setAttribute("aria-expanded", "false");
   }
 }
 
