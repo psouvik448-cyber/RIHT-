@@ -537,12 +537,18 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
   border: 1px solid #c7e5e9;
   border-radius: 9px;
   background: #fff;
+  color: #10283f;
+  font-size: .9rem;
+  font-weight: 850;
+  line-height: 1.2;
 }
-.visitor-counter-display img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  border: 0;
+.visitor-counter-display .counterapi {
+  min-height: 0;
+  color: inherit;
+  font: inherit;
+}
+.visitor-counter-display .counterapi a {
+  color: inherit;
 }
 .visitor-counter-note { display: none; }
 @media (max-width: 560px) {
