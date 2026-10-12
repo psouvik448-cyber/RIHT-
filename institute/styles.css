@@ -563,3 +563,11 @@ nav a{transition:color .25s ease,background .25s ease,transform .25s ease}
   .visitor-counter-heading { font-size: .88rem; }
   .visitor-counter-display { min-height: 32px; padding: 4px 7px; }
 }
+
+
+/* Plain text visitor counter: no external badge or clickable analytics link */
+.visitor-counter-display #visitor-count { color: inherit; font: inherit; font-weight: 850; }
+.visitor-counter-display .visitor-counter-unit { margin-left: 5px; color: #47717a; font-size: .72rem; font-weight: 750; white-space: nowrap; }
+@media (max-width: 560px) {
+  .visitor-counter-display .visitor-counter-unit { margin-left: 4px; font-size: .64rem; }
+}
