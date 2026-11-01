@@ -9,6 +9,58 @@
 .doc{background:#fff;color:#111;padding:14mm;min-height:270mm;font:11pt/1.45 Arial,sans-serif}.doc h1,.doc h2,.doc h3{text-align:center;margin:4px 0}.doc h1{font-size:17pt}.doc h2{font-size:14pt}.doc h3{font-size:12pt}.doc p{margin:7px 0}.doc .center{text-align:center}.doc .docrow{display:flex;gap:12px;border-bottom:1px dotted #888;padding:5px 0}.doc .docrow b{min-width:185px}.doc table{min-width:0}.doc th,.doc td{font-size:9pt;color:#111;border:1px solid #555}.doc .signature{display:flex;justify-content:space-between;margin-top:42px;gap:20px}.doc .sigline{border-top:1px solid #111;text-align:center;padding-top:5px;min-width:170px}.doc .photo{max-width:95px;max-height:110px;object-fit:contain}.doc .declaration{font-size:9.5pt;text-align:justify;margin:8px 0}.doc .pagebreak{break-before:page;page-break-before:always}
 @media(max-width:650px){.top{padding:12px 4%}.brand img{width:42px;height:42px}.brand strong{font-size:11px}.brand small{font-size:8px}.wrap{margin-top:16px}.intro,.form-card{padding:17px}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.actions .btn{width:100%}}
 @media print{body{background:#fff}.top,.wrap,.preview,.footer-note{display:none!important}#printArea{display:block!important}.doc{padding:12mm;min-height:0;box-shadow:none}.doc.pagebreak{break-before:page;page-break-before:always}@page{size:A4;margin:0}}
+
+/* Refined admission experience */
+body{background:#f4f7fb;color:#17243a;font-family:Inter,"Montserrat",Arial,sans-serif}
+.top{padding:14px max(4%,calc((100% - 1120px)/2));background:#081a36;border-bottom:3px solid #08a5c8}
+.brand img{width:50px;height:50px;padding:2px}
+.brand strong{font-size:13px;letter-spacing:.08em}
+.brand small{display:block;margin-top:4px;color:#76dff0;font-size:9px;letter-spacing:.17em}
+.top a.back{border-radius:6px;padding:9px 14px;font-weight:600}
+.wrap{width:min(900px,94%);margin:30px auto 64px}
+.intro{padding:28px 30px;border-radius:10px;border:1px solid #dce5ef;box-shadow:0 8px 24px rgba(8,26,54,.045);border-top:4px solid #08a5c8}
+.intro h1{font-size:clamp(25px,4vw,32px);letter-spacing:-.035em}
+.intro p{font-size:13px;font-weight:600;color:#53647a}
+.notice{background:#f2f9fc;border:1px solid #d9eef4;border-left:4px solid #08a5c8;border-radius:5px;color:#40546b;line-height:1.65}
+.form-card{padding:26px 30px;margin:16px 0;border-radius:10px;border:1px solid #dce5ef;box-shadow:0 6px 20px rgba(8,26,54,.035)}
+.form-card h2{font-size:17px;letter-spacing:-.01em;padding-bottom:12px;margin-bottom:20px;border-bottom:1px solid #e7edf3}
+.form-card h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#087d98;margin:20px 0 12px}
+.grid{gap:15px 18px}
+label{font-size:12px;color:#293b52}
+input,select,textarea{border:1px solid #d2dce7;border-radius:6px;min-height:44px;padding:10px 12px;font-size:13px}
+textarea{resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid rgba(8,165,200,.12);border-color:#08a5c8}
+.hint{line-height:1.55;color:#748196}
+.table-wrap{border:1px solid #dce5ef;border-radius:6px}
+table{min-width:590px}
+th{background:#f0f5f9;color:#31435a;font-size:11px;text-transform:uppercase;letter-spacing:.035em}
+td{background:#fff}
+td input{min-width:100px}
+.checkrow{line-height:1.55;color:#43536a}
+.checkrow input{accent-color:#078eac}
+.actions{padding-top:16px;border-top:1px solid #e7edf3}
+.btn{border-radius:6px;min-height:46px;padding:13px 20px;letter-spacing:.01em}
+.primary{background:#087f9c}
+.primary:hover{background:#06677f}
+.secondary{background:#102849}
+.footer-note{font-size:11px;letter-spacing:.025em}
+.doc{padding:13mm 14mm;font:10.5pt/1.4 Arial,sans-serif}
+.doc h1{font-size:16pt;color:#102849;letter-spacing:.02em}
+.doc h2{font-size:13pt;color:#087f9c;border-bottom:1.5px solid #087f9c;padding-bottom:5px;margin:5px 0 10px}
+.doc h3{font-size:10.5pt;color:#102849;text-align:left;border-bottom:1px solid #cbd5df;padding-bottom:4px;margin:14px 0 7px}
+.doc .docrow{gap:10px;padding:4px 0;border-bottom:1px dotted #aeb9c5}
+.doc .docrow b{min-width:175px;color:#24364d}
+.doc .declaration{font-size:9pt;line-height:1.42}
+.doc .signature{margin-top:32px}
+@media(max-width:650px){
+.top{padding:11px 4%}
+.brand img{width:42px;height:42px}
+.wrap{width:94%;margin:16px auto 40px}
+.intro,.form-card{padding:18px 16px;border-radius:8px}
+.grid{gap:12px}
+.form-card h2{font-size:16px}
+}
+
 </style></head>
 <body>
 <header class="top"><a class="brand" href="index.html"><img src="assets/logo.png" alt="RIHT logo"><span><strong>RABINDRA INSTITUTE</strong><small>FOR HEALTH TRAINING</small></span></a><a class="back" href="index.html">← Back to Home</a></header>
@@ -20,10 +72,7 @@
 <div class="field"><label>Course Name</label><input name="course" value="C.M.S AND E.D (WHO)" required></div>
 <div class="field"><label>Candidate's Full Name <i class="required">*</i></label><input name="name" required></div>
 <div class="field"><label>Father's / Husband's Name <i class="required">*</i></label><input name="guardian" required></div>
-<div class="field full"><label>Address Line 1</label><input name="address1" required></div>
-<div class="field"><label>Village / City</label><input name="village" required></div><div class="field"><label>Post Office</label><input name="po" required></div>
-<div class="field"><label>District</label><input name="district" required></div><div class="field"><label>State</label><input name="state" required value="West Bengal"></div>
-<div class="field"><label>PIN Code</label><input name="pin" inputmode="numeric" maxlength="6" required></div>
+<div class="field full"><label>Full Address <i class="required">*</i></label><textarea name="address" rows="3" placeholder="House / Village, Post Office, District, State, PIN Code" required></textarea><div class="hint">Enter your complete address only once.</div></div>
 <div class="field"><label>Sex</label><select name="sex" required><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select></div>
 <div class="field"><label>Marital Status</label><select name="marital" required><option value="">Select</option><option>Unmarried</option><option>Married</option><option>Other</option></select></div>
 <div class="field"><label>Blood Group</label><select name="blood"><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Unknown</option></select></div>
@@ -38,12 +87,7 @@
 <div class="field"><label>Personal Contact Number (W)</label><input name="phone" type="tel" required></div>
 <div class="field"><label>Email ID</label><input name="email" type="email"></div>
 </div>
-<h3>Permanent Address (for FORM-F)</h3><div class="grid">
-<div class="field full"><label>Village / House / Street</label><input name="perm_address"></div><div class="field"><label>Post Office</label><input name="perm_po"></div><div class="field"><label>Via</label><input name="perm_via"></div><div class="field"><label>District</label><input name="perm_district"></div><div class="field"><label>State</label><input name="perm_state" value="West Bengal"></div><div class="field"><label>PIN Code</label><input name="perm_pin" inputmode="numeric" maxlength="6"></div>
-</div>
-<h3>Correspondence Address (for FORM-F)</h3><div class="grid">
-<div class="field full"><label>Village / House / Street</label><input name="corr_address"></div><div class="field"><label>Post Office</label><input name="corr_po"></div><div class="field"><label>Via</label><input name="corr_via"></div><div class="field"><label>District</label><input name="corr_district"></div><div class="field"><label>State</label><input name="corr_state" value="West Bengal"></div><div class="field"><label>PIN Code</label><input name="corr_pin" inputmode="numeric" maxlength="6"></div>
-</div></section>
+</section>
 <section class="form-card"><h2>2. Academic Records</h2><p class="hint">Enter details from your marksheets. Attach photocopies as required by the institute.</p><div class="table-wrap"><table><thead><tr><th>Examination Passed</th><th>Board / Council / University / Other</th><th>Marks Obtained</th><th>Year of Passing</th></tr></thead><tbody>
 <tr><td>10th</td><td><input name="board10" aria-label="10th board"></td><td><input name="marks10" aria-label="10th marks"></td><td><input name="year10" aria-label="10th year"></td></tr>
 <tr><td>12th</td><td><input name="board12" aria-label="12th board"></td><td><input name="marks12" aria-label="12th marks"></td><td><input name="year12" aria-label="12th year"></td></tr>
@@ -97,12 +141,10 @@ function academicTable(){return '<table><tr><th>EXAMINE PASSED</th><th>NAME OF B
 function makeDocs(){
 const photo=photoData?'<img class="photo" src="'+photoData+'">':'';
 const sign=signData?'<img class="photo" src="'+signData+'">':'';
-const address=[val('address1'),val('village'),val('po'),val('district'),val('state'),val('pin')].filter(Boolean).join(', ');
-const perm=[val('perm_address'),val('perm_po'),val('perm_via'),val('perm_district'),val('perm_state'),val('perm_pin')].filter(Boolean).join(', ')||address;
-const corr=[val('corr_address'),val('corr_po'),val('corr_via'),val('corr_district'),val('corr_state'),val('corr_pin')].filter(Boolean).join(', ')||perm;
+const address=val('address');
 const checked=[...form.querySelectorAll('input[name="enclosures"]:checked')].map(x=>x.value);
 const enc=['Photocopy of Mark Sheet duly attested by Gazetted Officer and Programme coordinator.','Mark Sheet of last Qualifying exam (2copy).','Verification passed for verification of Minimum Eligibility. (2 copies)','High School Certificate (10th Level) or Admit card for date of birth. (2copy)','Aadhar card (1copy)','Any other medical training certificate.(1copy)'];
-let out='<section class="doc"><h1>RABINDRA INSTITUTE FOR HEALTH TRAINING</h1><h2>ADMISSION &amp; REGISTRATION FORM</h2><p class="center">Centre - 67 | Register under MSME, NITI AAYOG &amp; NCS Govt. of India, ISO 9001: 2015 Certified Training Centre</p><p class="center">Authorised Centre of INDIAN RURAL MEDICAL ASSOCIATION</p><p class="center">226 B.B. Ganguly Street, Kolkata - 700 012</p><p class="center">Under the Guideline Policy of W.H.O, Unicef and Govt. of India</p><p><b>Session:</b> '+esc(val('session'))+' &nbsp; <b>Course:</b> '+esc(val('course'))+' &nbsp; <b>Centre No.:</b> 067</p><div class="center">'+photo+'</div><h3>Candidate Details</h3>'+row('1. Name of the Candidate',val('name'))+row("2. Father's/Husband's Name",val('guardian'))+row('3. Address',address)+row('4. Sex',val('sex'))+row('5. Marital Status',val('marital'))+row('6. Blood Group',val('blood'))+row('7. Date of Birth',val('dob'))+row('8. AADHAAR No',val('aadhaar'))+row('9. Academic Qualification',val('qualification'))+row('10. Mode of Training',val('mode'))+row('11. Occupation',val('occupation'))+row('12. Nationality',val('nationality'))+row('13. Religion',val('religion'))+row('14. Language',val('language'))+row('16. Personal Contact number (W)',val('phone'))+row('17. Email id',val('email'))+'<h3>Permanent &amp; Correspondence Address (FORM-F details)</h3>'+row('Permanent address: Village, Post Office, Via, District, State, PIN',perm)+row('Correspondence address: Village, Post Office, Via, District, State, PIN',corr)+'<h3>15. Academic Records (Attach certificate photocopy)</h3>'+academicTable()+'<h3>FORM-F Additional Information</h3>'+row('Special mark of Identification',val('identification'))+row('MPD No. (if already allotted)',val('mpd'))+'<div class="docrow"><b>Specimen signature</b><span>'+sign+'</span></div><h3>Enclosures Checklist</h3><p>'+enc.map(x=>(checked.includes(x.replace(/\\.$/,''))?'☑ ':'☐ ')+esc(x)).join('<br>')+'</p><h3>DECLARATION</h3>'+declarations.map((x,i)=>'<p class="declaration">'+(i+1)+'. '+esc(x)+'</p>').join('')+'<h3>Cancellation of Admission &amp; Refund Policy</h3><p class="declaration">Fee once paid not refundable or adjustable under any circumstances in the future. Your admission will be canceled: if the admission form is incomplete; if the fee paid is short; if the supporting documents are not complete; if false documents have been submitted; if required educational qualifications are not fulfilled; if incorrect information is given, I have read and understood the rules and regulations.</p><h3>LETTER OF UNDERTAKING | FORM-B</h3><p><b>TO WHOM IT MAY CONCERN</b><br>Dated: '+esc(val('application_date'))+'<br><b>Re: CMS-ED/Training of IRMA, Kolkata</b></p><p class="declaration">I have read and understood the Rules, Regulations, and Directives of the Indian Rural Medical Association (IRMA) and I promise to obey and abide by all of them at the time of training and after completion of the training at the time of offering service to the people.</p>'+undertakings.map((x,i)=>'<p class="declaration">'+(i+1)+'. '+esc(x)+'</p>').join('')+'<p>I remain yours faithfully.</p><p>Place: '+esc(val('place'))+' &nbsp; Date: '+esc(val('application_date'))+'</p><p>MPD NO.: '+esc(val('mpd'))+' &nbsp; Centre No. - 067.</p><div class="signature">'+sign+'<div class="sigline">Full signature of Candidate / Student</div><div class="sigline">Signature of Centre Organiser With office Seal<br>Date</div></div><p class="declaration">For office use: MPD No. ____________________ Date: ____________________</p></section>';
+let out='<section class="doc"><h1>RABINDRA INSTITUTE FOR HEALTH TRAINING</h1><h2>ADMISSION &amp; REGISTRATION FORM</h2><p class="center">Centre - 67 | Register under MSME, NITI AAYOG &amp; NCS Govt. of India, ISO 9001: 2015 Certified Training Centre</p><p class="center">Authorised Centre of INDIAN RURAL MEDICAL ASSOCIATION</p><p class="center">226 B.B. Ganguly Street, Kolkata - 700 012</p><p class="center">Under the Guideline Policy of W.H.O, Unicef and Govt. of India</p><p><b>Session:</b> '+esc(val('session'))+' &nbsp; <b>Course:</b> '+esc(val('course'))+' &nbsp; <b>Centre No.:</b> 067</p><div class="center">'+photo+'</div><h3>Candidate Details</h3>'+row('1. Name of the Candidate',val('name'))+row("2. Father's/Husband's Name",val('guardian'))+row('3. Address',address)+row('4. Sex',val('sex'))+row('5. Marital Status',val('marital'))+row('6. Blood Group',val('blood'))+row('7. Date of Birth',val('dob'))+row('8. AADHAAR No',val('aadhaar'))+row('9. Academic Qualification',val('qualification'))+row('10. Mode of Training',val('mode'))+row('11. Occupation',val('occupation'))+row('12. Nationality',val('nationality'))+row('13. Religion',val('religion'))+row('14. Language',val('language'))+row('16. Personal Contact number (W)',val('phone'))+row('17. Email id',val('email'))+'<h3>15. Academic Records (Attach certificate photocopy)</h3>'+academicTable()+'<h3>FORM-F Additional Information</h3>'+row('Special mark of Identification',val('identification'))+row('MPD No. (if already allotted)',val('mpd'))+'<div class="docrow"><b>Specimen signature</b><span>'+sign+'</span></div><h3>Enclosures Checklist</h3><p>'+enc.map(x=>(checked.includes(x.replace(/\\.$/,''))?'☑ ':'☐ ')+esc(x)).join('<br>')+'</p><h3>DECLARATION</h3>'+declarations.map((x,i)=>'<p class="declaration">'+(i+1)+'. '+esc(x)+'</p>').join('')+'<h3>Cancellation of Admission &amp; Refund Policy</h3><p class="declaration">Fee once paid not refundable or adjustable under any circumstances in the future. Your admission will be canceled: if the admission form is incomplete; if the fee paid is short; if the supporting documents are not complete; if false documents have been submitted; if required educational qualifications are not fulfilled; if incorrect information is given, I have read and understood the rules and regulations.</p><h3>LETTER OF UNDERTAKING | FORM-B</h3><p><b>TO WHOM IT MAY CONCERN</b><br>Dated: '+esc(val('application_date'))+'<br><b>Re: CMS-ED/Training of IRMA, Kolkata</b></p><p class="declaration">I have read and understood the Rules, Regulations, and Directives of the Indian Rural Medical Association (IRMA) and I promise to obey and abide by all of them at the time of training and after completion of the training at the time of offering service to the people.</p>'+undertakings.map((x,i)=>'<p class="declaration">'+(i+1)+'. '+esc(x)+'</p>').join('')+'<p>I remain yours faithfully.</p><p>Place: '+esc(val('place'))+' &nbsp; Date: '+esc(val('application_date'))+'</p><p>MPD NO.: '+esc(val('mpd'))+' &nbsp; Centre No. - 067.</p><div class="signature">'+sign+'<div class="sigline">Full signature of Candidate / Student</div><div class="sigline">Signature of Centre Organiser With office Seal<br>Date</div></div><p class="declaration">For office use: MPD No. ____________________ Date: ____________________</p></section>';
 return out
 }
 function preview(){const area=document.getElementById('printArea');area.innerHTML=makeDocs();area.style.display='block';return area}
