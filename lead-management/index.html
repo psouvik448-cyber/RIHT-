@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RIHT Lead Management</title>
+<style>
+:root{--navy:#10243b;--blue:#1769aa;--teal:#0e9f8b;--bg:#f3f6fa;--line:#e4eaf1;--muted:#687789}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#172638;font:15px Inter,system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:9px;padding:11px 15px;font-weight:650}.primary{background:var(--blue);color:#fff}.dark{background:var(--navy);color:white}.light{background:#eaf1f8;color:#183b5c}.danger{background:#fff0f0;color:#b42318}.muted{color:var(--muted)}.wrap{max-width:1180px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.logo{height:44px;width:44px;border-radius:13px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:800}.brand h1{font-size:19px;margin:0}.brand p{margin:3px 0 0;color:var(--muted);font-size:12px}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 5px 20px #193b5c08}.auth{max-width:430px;margin:8vh auto}.auth h2{margin:0 0 7px}.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}.field label{font-size:13px;font-weight:650;color:#425267}.field input,.field select,.field textarea{width:100%;border:1px solid #d8e0e9;border-radius:9px;padding:11px;background:#fff;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769aa16}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:16px 0}.stat small{color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:8px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0}.tools{display:flex;gap:8px;flex-wrap:wrap}.search{min-width:230px;padding:11px;border:1px solid var(--line);border-radius:9px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:850px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);font-size:13px}th{color:#667789;background:#f8fafc;font-weight:700}.pill{padding:5px 8px;border-radius:20px;font-size:11px;font-weight:700;background:#edf2f7;white-space:nowrap}.New{background:#eaf2ff;color:#2456a6}.Interested{background:#e6f7f2;color:#08785f}.Follow-up{background:#fff5df;color:#986000}.Admitted{background:#e8f8e9;color:#237a32}. \\Not-Interested{background:#fff0f0;color:#b42318}.actions{display:flex;gap:5px}.actions button{padding:7px 9px;font-size:12px}.hidden{display:none!important}.modal{position:fixed;inset:0;background:#10243b88;display:grid;place-items:center;padding:15px;z-index:5}.modalbox{background:#fff;border-radius:16px;padding:20px;width:min(620px,100%);max-height:92vh;overflow:auto}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 13px}.full{grid-column:1/-1}.notice{padding:11px;border-radius:9px;background:#fff7e6;color:#805600;font-size:13px;margin:12px 0}.empty{text-align:center;padding:35px;color:var(--muted)}.foot{font-size:12px;color:var(--muted);text-align:center;margin:20px}.status{font-size:12px;color:var(--teal)}@media(max-width:720px){.wrap{padding:13px}.grid{grid-template-columns:repeat(2,1fr)}.top{align-items:flex-start}.brand h1{font-size:16px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.search{width:100%;min-width:0}.toolbar{align-items:stretch}.tools{width:100%}.tools button{flex:1}.top .tools button{padding:9px}.panel{padding:14px}}
+</style>
+</head>
+<body>
+<div id="authView" class="wrap">
+ <div class="panel auth">
+  <div class="brand"><div class="logo">RI</div><div><h1>RIHT Lead Management</h1><p>Rabindra Institute for Health Training</p></div></div>
+  <h2 style="margin-top:25px">আপনার অ্যাকাউন্টে লগইন করুন</h2><p class="muted">আপনার লিড নিরাপদে সংরক্ষণ ও সিঙ্ক হবে।</p>
+  <div class="field"><label>ইমেল</label><input id="email" type="email" autocomplete="username" placeholder="আপনার ইমেল"></div>
+  <div class="field"><label>পাসওয়ার্ড</label><input id="password" type="password" autocomplete="current-password" placeholder="কমপক্ষে ৬ অক্ষর"></div>
+  <button class="primary" style="width:100%;margin-top:8px" id="loginBtn">লগইন</button>
+  <button class="light" style="width:100%;margin-top:9px" id="signupBtn">নতুন অ্যাকাউন্ট তৈরি করুন</button>
+  <p id="authMsg" class="muted" style="font-size:13px"></p>
+  <div class="notice">প্রথমবার হলে নিজের ইমেল দিয়ে অ্যাকাউন্ট তৈরি করুন। এই অ্যাকাউন্টের ডেটা অন্য অ্যাকাউন্ট থেকে আলাদা থাকবে।</div>
+ </div>
+</div>
+<div id="appView" class="hidden">
+ <div class="wrap">
+  <header class="top"><div class="brand"><div class="logo">RI</div><div><h1>RIHT Lead Management</h1><p>Rabindra Institute for Health Training · <span id="syncState" class="status">Connecting…</span></p></div></div><div class="tools"><button class="light" id="exportBtn">Export CSV</button><button class="dark" id="logoutBtn">Logout</button></div></header>
+  <section class="grid">
+   <div class="panel stat"><small>Total Leads</small><strong id="totalCount">0</strong></div>
+   <div class="panel stat"><small>New Leads</small><strong id="newCount">0</strong></div>
+   <div class="panel stat"><small>Follow-ups Due</small><strong id="dueCount">0</strong></div>
+   <div class="panel stat"><small>Admitted</small><strong id="admitCount">0</strong></div>
+  </section>
+  <section class="panel">
+   <div class="toolbar"><div><h2 style="margin:0;font-size:18px">Student Leads</h2><small class="muted">নতুন লিড যোগ করুন এবং ফলোআপ আপডেট করুন</small></div><div class="tools"><button class="primary" id="addBtn">＋ Add New Lead</button></div></div>
+   <div class="toolbar"><input id="searchBox" class="search" placeholder="নাম / মোবাইল / কোর্স দিয়ে খুঁজুন"><select id="statusFilter" class="search"><option value="">সব Status</option><option>New</option><option>Interested</option><option>Follow-up</option><option>Admitted</option><option>Not Interested</option></select></div>
+   <div class="tablewrap"><table><thead><tr><th>Student</th><th>Phone</th><th>Course</th><th>Status</th><th>Next Follow-up</th><th>Last Note</th><th>Actions</th></tr></thead><tbody id="leadRows"></tbody></table><div id="emptyState" class="empty">এখনও কোনো লিড যোগ করা হয়নি। Add New Lead চাপুন।</div></div>
+  </section>
+  <div class="foot">RIHT Lead Management · Cloud sync via Firebase · Free-plan usage limits apply</div>
+ </div>
+</div>
+<div id="leadModal" class="modal hidden"><div class="modalbox">
+ <div class="top"><div><h2 id="modalTitle" style="margin:0;font-size:19px">Add New Lead</h2><small class="muted">ছাত্রছাত্রীর তথ্য লিখুন</small></div><button class="light" id="closeModal">✕</button></div>
+ <form id="leadForm"><input id="leadId" type="hidden"><div class="formgrid">
+  <div class="field"><label>Student Name *</label><input id="name" required maxlength="100" placeholder="সম্পূর্ণ নাম"></div>
+  <div class="field"><label>Mobile Number *</label><input id="phone" required inputmode="numeric" maxlength="10" placeholder="10-digit mobile"></div>
+  <div class="field"><label>Course</label><select id="course"><option value="">Select course</option><option>CMS & ED</option><option>CMSNAG WHO</option><option>D.Pharm</option><option>BPT</option><option>Other</option></select></div>
+  <div class="field"><label>Lead Source</label><select id="source"><option>Facebook Ads</option><option>Instagram Ads</option><option>WhatsApp</option><option>Phone Call</option><option>Reference</option><option>Walk-in</option><option>Other</option></select></div>
+  <div class="field"><label>Status</label><select id="leadStatus"><option>New</option><option>Interested</option><option>Follow-up</option><option>Admitted</option><option>Not Interested</option></select></div>
+  <div class="field"><label>Next Follow-up Date</label><input id="followDate" type="date"></div>
+  <div class="field full"><label>Address (optional)</label><input id="address" maxlength="250" placeholder="Village, Post, District"></div>
+  <div class="field full"><label>Follow-up Note</label><textarea id="note" rows="3" maxlength="1000" placeholder="কথাবার্তার সংক্ষিপ্ত বিবরণ"></textarea></div>
+ </div><div class="tools" style="justify-content:flex-end;margin-top:12px"><button type="button" class="light" id="cancelBtn">Cancel</button><button class="primary" id="saveBtn" type="submit">Save Lead</button></div></form>
+</div></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* STEP 1: Replace these values with your Firebase Web App configuration. */
+const firebaseConfig = {
+ apiKey: "PASTE_API_KEY_HERE",
+ authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
+ projectId: "PASTE_PROJECT_ID",
+ storageBucket: "PASTE_PROJECT_ID.appspot.com",
+ messagingSenderId: "PASTE_MESSAGING_SENDER_ID",
+ appId: "PASTE_APP_ID"
+};
+const configured = firebaseConfig.apiKey !== "PASTE_API_KEY_HERE";
+let auth=null, db=null, currentUser=null, leads=[], unsubscribe=null;
+const $=id=>document.getElementById(id);
+function message(t){$('authMsg').textContent=t}
+function explainError(e){const map={ 'auth/email-already-in-use':'এই ইমেল দিয়ে অ্যাকাউন্ট আছে। লগইন করুন।','auth/invalid-email':'সঠিক ইমেল লিখুন।','auth/weak-password':'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের দিন।','auth/invalid-credential':'ইমেল বা পাসওয়ার্ড সঠিক নয়।','auth/user-not-found':'এই অ্যাকাউন্ট পাওয়া যায়নি।','permission-denied':'ডেটাবেস Security Rules ঠিকমতো সেট করা হয়নি।'};return map[e.code]||e.message||'সমস্যা হয়েছে।'}
+function ready(){if(!configured){message('প্রথমে README-তে দেওয়া Firebase সেটআপ করে firebaseConfig পূরণ করুন।');return false}return true}
+$('loginBtn').onclick=async()=>{if(!ready())return;try{await firebase.auth().signInWithEmailAndPassword($('email').value.trim(),$('password').value)}catch(e){message(explainError(e))}};
+$('signupBtn').onclick=async()=>{if(!ready())return;try{await firebase.auth().createUserWithEmailAndPassword($('email').value.trim(),$('password').value)}catch(e){message(explainError(e))}};
+$('logoutBtn').onclick=()=>firebase.auth().signOut();
+if(configured){firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();auth.onAuthStateChanged(user=>{currentUser=user;if(user){$('authView').classList.add('hidden');$('appView').classList.remove('hidden');listen()}else{$('appView').classList.add('hidden');$('authView').classList.remove('hidden');if(unsubscribe)unsubscribe()}})}
+function listen(){ $('syncState').textContent='Live sync active';unsubscribe=db.collection('users').doc(currentUser.uid).collection('leads').orderBy('updatedAt','desc').onSnapshot(s=>{leads=s.docs.map(d=>({id:d.id,...d.data()}));render()},e=>{$('syncState').textContent='Sync error';alert(explainError(e))})}
+function render(){const q=$('searchBox').value.toLowerCase(),f=$('statusFilter').value;const filtered=leads.filter(x=>(!f||x.status===f)&&[x.name,x.phone,x.course,x.source].join(' ').toLowerCase().includes(q));$('totalCount').textContent=leads.length;$('newCount').textContent=leads.filter(x=>x.status==='New').length;$('admitCount').textContent=leads.filter(x=>x.status==='Admitted').length;const today=new Date().toISOString().slice(0,10);$('dueCount').textContent=leads.filter(x=>x.followDate&&x.followDate<=today&&x.status!=='Admitted'&&x.status!=='Not Interested').length;$('emptyState').style.display=filtered.length?'none':'block';$('leadRows').innerHTML=filtered.map(x=>'<tr><td><b>'+esc(x.name)+'</b><br><small class="muted">'+esc(x.source||'')+'</small></td><td>'+esc(x.phone)+'</td><td>'+esc(x.course||'—')+'</td><td><span class="pill">'+esc(x.status||'New')+'</span></td><td>'+esc(x.followDate||'—')+'</td><td>'+esc(x.note||'—')+'</td><td><div class="actions"><button class="light" data-edit="'+x.id+'">Edit</button><button class="light" data-call="'+x.phone+'">Call</button><button class="danger" data-del="'+x.id+'">Delete</button></div></td></tr>').join('');}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function openModal(x){$('leadForm').reset();$('leadId').value=x?.id||'';$('modalTitle').textContent=x?'Edit Lead':'Add New Lead';if(x){for(const k of ['name','phone','course','source','address','note'])$(k).value=x[k]||'';$('leadStatus').value=x.status||'New';$('followDate').value=x.followDate||''}else{$('source').value='Facebook Ads';$('leadStatus').value='New'}$('leadModal').classList.remove('hidden')}
+function closeModal(){$('leadModal').classList.add('hidden')}
+$('addBtn').onclick=()=>openModal();$('closeModal').onclick=closeModal;$('cancelBtn').onclick=closeModal;$('searchBox').oninput=render;$('statusFilter').onchange=render;
+$('leadRows').onclick=async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.edit){const x=leads.find(a=>a.id===b.dataset.edit);openModal(x)}if(b.dataset.call)location.href='tel:'+b.dataset.call;if(b.dataset.del){if(confirm('এই লিডটি মুছে ফেলবেন?'))await db.collection('users').doc(currentUser.uid).collection('leads').doc(b.dataset.del).delete()}};
+$('leadForm').onsubmit=async e=>{e.preventDefault();const phone=$('phone').value.trim();if(!/^\d{10}$/.test(phone)){alert('সঠিক ১০ সংখ্যার মোবাইল নম্বর দিন।');return}const id=$('leadId').value;const data={name:$('name').value.trim(),phone,course:$('course').value,source:$('source').value,status:$('leadStatus').value,followDate:$('followDate').value,address:$('address').value.trim(),note:$('note').value.trim(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()};try{$('saveBtn').disabled=true;const ref=db.collection('users').doc(currentUser.uid).collection('leads');if(id)await ref.doc(id).update(data);else{data.createdAt=firebase.firestore.FieldValue.serverTimestamp();await ref.add(data)}closeModal()}catch(err){alert(explainError(err))}finally{$('saveBtn').disabled=false}};
+$('exportBtn').onclick=()=>{if(!leads.length){alert('Export করার মতো লিড নেই।');return}const cols=['name','phone','course','source','status','followDate','address','note'];const csv=[cols.join(','),...leads.map(x=>cols.map(k=>'"'+String(x[k]||'').replace(/"/g,'""')+'"').join(','))].join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='RIHT-Leads.csv';a.click();URL.revokeObjectURL(a.href)};
+</script>
+</body></html>
